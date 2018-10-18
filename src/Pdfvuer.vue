@@ -175,6 +175,10 @@ export default {
 	    // Associates the actual page with the view, and drawing it
 	    self.pdfViewer.setPdfPage(pdfPage);
       self.drawScaled("page-width");
+      var textContent = pdfPage.getTextContent();
+      textContent.then(function(text){
+        self.$emit('text-content', text);
+      });
     })
   },
 }
